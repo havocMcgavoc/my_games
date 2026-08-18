@@ -3,6 +3,7 @@ import Magic_8_ball as Mb
 import Number_Guessing_Game as Guess
 import Rock_Paper_Scissors as rps
 import Hangman
+import Detective_game as Dg
 
 print("""==============================
         Game launcher
@@ -14,7 +15,8 @@ def hub():
 2. Magic 8 ball
 3. Number Guessing Game
 4. Rock Paper Scissors
-5. Hangman""")
+5. Hangman
+6. Detective game""")
 
     while True:
         try:
@@ -32,6 +34,8 @@ def hub():
         rps.RockPaperScissors()
     elif game == 5:
         Hangman.hangman()
+    elif game == 6:
+        Dg.detective()
 
 hub()
 attempt = input("Would you like to play another game? (y/n)").lower().strip()
