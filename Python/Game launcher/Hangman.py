@@ -1,4 +1,5 @@
 import random
+import sys
 
 def hangman():
     print("Welcome to hangman!")
@@ -61,6 +62,7 @@ def hangman():
     ]
     word = random.choice(words)
     print("I have thought of a word and you must guess it")
+    attempt = 10
     display = ["_"] * len(word)
     print(" ".join(display))
     print("\n")
@@ -69,9 +71,15 @@ def hangman():
         if guess not in word:
             print("\r"+" ".join(display))
             if "_" not in display:
-                print("You completed the word!")
+                print(f"You completed the word! You got it in {attempt} attempts!")
                 break
-            guess = input("\rWrong! What's the next letter?: ").lower().strip()
+            attempt -= 1
+            guess = input(f"""\rWrong! What's the next letter?
+You have {attempt} attempts left.
+>""").lower().strip()
+            if attempt == 1:
+                print("You lost...")
+                sys.exit()
         else:
             for i in range(len(word)):
                 if guess == word[i]:
@@ -80,4 +88,6 @@ def hangman():
                     if "_" not in display:
                         print("You completed the word!")
                         break
-                    guess = input("\rCorrect! What's the next letter?: ").lower().strip()
+                    guess = input(f"""\rCorrect! What's the next letter?
+You have {attempt} attempts left.
+>""").lower().strip()
