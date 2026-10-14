@@ -29,7 +29,7 @@ def hub():
     elif game == 2:
         Mb.magic_ball()
     elif game == 3:
-        Guess.guess()
+        Guess.game()
     elif game == 4:
         rps.RockPaperScissors()
     elif game == 5:
