@@ -48,6 +48,7 @@ def game():
                 guess = int(input("Try again: "))
         if guess == number:
             print(f"Congratulations! You guessed the number in {attempt - 1} attempts!")
+    guess()
     again = input("Do you want to play again? (y/n): ")
     if again == "y":
         game()
