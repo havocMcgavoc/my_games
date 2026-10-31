@@ -65,7 +65,7 @@ def hangman():
     attempt = 10
     display = ["_"] * len(word)
     print(" ".join(display))
-    print("\n")
+    print()
     guess = input("What's the letter?: ").lower().strip()
     while "_" in display:
         if guess not in word:
