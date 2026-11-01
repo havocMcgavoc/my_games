@@ -4,26 +4,28 @@ import Number_Guessing_Game as Guess
 import Rock_Paper_Scissors as rps
 import Hangman
 import Detective_game as Dg
+import Polygon_maker as pm
 
-print("""==============================
-        Game launcher
-==============================""")
+print("""============================== Game launcher ==============================""")
 
-def hub():
+
+def launch_game():
     print("""
-1. Excuse generator
-2. Magic 8 ball
-3. Number Guessing Game
-4. Rock Paper Scissors
-5. Hangman
-6. Detective game""")
+ 1. Excuse generator
+ 2. Magic 8 ball
+ 3. Number Guessing Game
+ 4. Rock Paper Scissors
+ 5. Hangman
+ 6. Detective game
+ 7. Polygon maker""")
 
     while True:
         try:
-            game = int(input("Which game would you like to play?(Enter number only) "))
+            game = int(input("Which game would you like to play? (Enter number only): "))
             break
         except ValueError:
-            print("Please enter a number")
+            print("Please enter a valid number.")
+
     if game == 1:
         Excuse.excuse()
     elif game == 2:
@@ -36,11 +38,18 @@ def hub():
         Hangman.hangman()
     elif game == 6:
         Dg.detective()
+    elif game == 7:
+        pm.polygon()
+    else:
+        print("Invalid choice. Please choose a number between 1 and 7.")
 
-hub()
-attempt = input("Would you like to play another game? (y/n)").lower().strip()
-while attempt == "y":
-    hub()
-    attempt = input("Would you like to play another game? (y/n)").lower().strip()
-else:
-    print("Thank you for playing")
+
+# --- Main Program Control Loop ---
+while True:
+    launch_game()
+
+    # Prompt the user and cleanly evaluate their response
+    play_again = input("\nWould you like to play another game? (y/n): ").lower().strip()
+    if play_again != "y":
+        print("Thank you for playing!")
+        break
